@@ -2,7 +2,7 @@ mongoose = require 'mongoose'
 _ = require 'lodash'
 
 class MockQuery
-  @SUPPORTED_METHODS: ['find', 'findById', 'findOne']
+  @SUPPORTED_METHODS: ['find', 'findById', 'findOne', 'update']
 
   _mocks: []
 
