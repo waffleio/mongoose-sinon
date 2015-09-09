@@ -1,6 +1,6 @@
 {
   "name": "mongoose-sinon",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Convenient sinon stubs for all your mongoose model and document methods.",
   "main": "index.js",
   "scripts": {
