@@ -82,12 +82,29 @@ describe 'MockQuery', ->
             done()
 
         it 'does not match unless all arguments match', ->
+          model = new @Model()
+
           modelFindMock = @Model[method]
-          .forQuery {name: 'hello'}, {update: 'data'}, 'projection', {opts: 'config'}
+          .forQuery
+            field: 'constraint'
+            name: 'hello'
+          ,
+            update: 'other data'
+          ,
+            'projection'
+          ,
+            opts: 'config'
           .returns null, [@doc]
 
           fn = =>
-            @Model[method] {name: 'hello'}, {update: 'other data'}, 'projection', {opts: 'config'}
+            @Model[method]
+              name: 'hello'
+            ,
+              update: 'other data'
+            ,
+              'projection'
+            ,
+              opts: 'config'
             .then (docs) =>
 
           fn.should.throw """Unexpected query MockQuerySchema##{method}({"name":"hello"}, {"update":"other data"}, "projection", {"opts":"config"})"""

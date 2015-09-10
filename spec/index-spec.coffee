@@ -14,7 +14,7 @@ describe 'mongoose-sinon', ->
     should.exist MongooseSinon.supportedMethods, 'should have #supportedMethods'
     MongooseSinon.supportedMethods.should.be.a 'function'
     MongooseSinon.supportedMethods().should.be.an 'array'
-    MongooseSinon.supportedMethods().length.should.equal 3
+    MongooseSinon.supportedMethods().length.should.equal 4
 
   it 'stubs Model methods', ->
     MongooseSinon = require('../src') @sinon

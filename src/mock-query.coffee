@@ -14,7 +14,8 @@ class MockQuery
         args.push callback
         callback = undefined
 
-      mock = _.findLast me._mocks, {query: args}
+      mock = _.findLast me._mocks, (mock) ->
+        _.isEqual mock.query, args
 
       unless mock
         query = _.map args, (arg) ->
