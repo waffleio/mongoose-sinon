@@ -13,6 +13,9 @@ module.exports = (grunt) ->
   grunt.initConfig
     bump:
       options:
+        commitFiles: ['-a']
+        files: ['package.json']
+        prereleaseName: 'alpha'
         pushTo: 'origin'
 
     clean: ['lib/']
