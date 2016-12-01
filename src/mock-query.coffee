@@ -1,4 +1,5 @@
 mongoose = require 'mongoose'
+mongoose.Promise = require('q').Promise
 _ = require 'lodash'
 
 class MockQuery
