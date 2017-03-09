@@ -183,6 +183,23 @@ describe 'MockQuery', ->
             modelFindMock.query.lean.callCount.should.equal 1
             done()
 
+        it 'supports select', (done) ->
+          modelFindMock = @Model[method]
+          .forQuery name: 'hello'
+          .returns null, [@doc]
+
+          @Model[method]
+            name: 'hello'
+          .select name: 1
+          .exec (err, docs) =>
+            should.not.exist err
+            should.exist docs
+            docs.should.be.an 'array'
+            docs.length.should.equal 1
+            docs[0].should.equal @doc
+            modelFindMock.query.select.callCount.should.equal 1
+            done()
+
         it 'requires #forQuery to be called before @returns', ->
           @Model[method].returns.should.throw 'Must call `forQuery` before calling `returns`'
 

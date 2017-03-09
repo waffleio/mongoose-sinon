@@ -61,6 +61,7 @@ class MockQuery
     _.assign mockQuery,
       lean: sinon.stub().returns mockQuery
       populate: sinon.stub().returns mockQuery
+      select: sinon.stub().returns mockQuery
       sort: sinon.stub().returns mockQuery
       exec: (cb) ->
         setTimeout ->
