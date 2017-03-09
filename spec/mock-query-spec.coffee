@@ -166,6 +166,23 @@ describe 'MockQuery', ->
             modelFindMock.query.sort.should.have.been.calledWith 'name'
             done()
 
+        it 'supports lean', (done) ->
+          modelFindMock = @Model[method]
+          .forQuery name: 'hello'
+          .returns null, [@doc]
+
+          @Model[method]
+            name: 'hello'
+          .lean()
+          .exec (err, docs) =>
+            should.not.exist err
+            should.exist docs
+            docs.should.be.an 'array'
+            docs.length.should.equal 1
+            docs[0].should.equal @doc
+            modelFindMock.query.lean.callCount.should.equal 1
+            done()
+
         it 'requires #forQuery to be called before @returns', ->
           @Model[method].returns.should.throw 'Must call `forQuery` before calling `returns`'
 
